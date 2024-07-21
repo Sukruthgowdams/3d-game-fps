@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/hud_font.tres" type="DynamicFont" id=1]
+
+[node name="hud" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+margin_bottom = -3.0
+
+[node name="background" type="ColorRect" parent="."]
+margin_left = 5.0
+margin_top = 612.0
+margin_right = 360.0
+margin_bottom = 720.0
+color = Color( 0.14902, 0.141176, 0.141176, 1 )
+
+[node name="healthui" type="Label" parent="background"]
+margin_right = 187.0
+margin_bottom = 55.0
+custom_fonts/font = ExtResource( 1 )
+text = "HEALTH : 100"
+
+[node name="weaponui" type="Label" parent="background"]
+margin_left = 4.0
+margin_top = 69.0
+margin_right = 208.0
+margin_bottom = 122.0
+custom_fonts/font = ExtResource( 1 )
+text = "PISTOL: 25/50"
+
+[node name="display" type="ColorRect" parent="background"]
+margin_left = 172.0
+margin_right = 355.0
+margin_bottom = 108.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="weaponslot" type="Label" parent="background/display"]
+margin_left = 160.0
+margin_top = 5.0
+margin_right = 183.0
+margin_bottom = 49.0
+custom_fonts/font = ExtResource( 1 )
+text = "1"
+
+[node name="croshair" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -29.5
+margin_right = -15.0
+margin_bottom = -24.5
+rect_min_size = Vector2( 5, 5 )
+color = Color( 1, 0, 0, 1 )

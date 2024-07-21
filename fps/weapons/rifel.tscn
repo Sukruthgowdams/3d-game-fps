@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.0313726, 0.00392157, 0.00392157, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("root/anchor:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 90, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "equip"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("root/anchor:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 90, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "unequip"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("root/anchor:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -90, 0, 0 ) ]
+}
+
+[node name="rifel" type="Spatial"]
+
+[node name="root" type="Spatial" parent="."]
+
+[node name="anchor" type="Spatial" parent="root"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 7.17342e-05, -0.000208393, 0.500119 )
+
+[node name="body" type="Spatial" parent="root/anchor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5 )
+
+[node name="upper" type="MeshInstance" parent="root/anchor/body"]
+transform = Transform( 0.0523949, 0, 0, 0, 0.0299398, -0.00949957, 0, 0.00337358, 0.265813, -0.0116019, 0.0546464, -0.0813341 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../../../..")
+
+[node name="lower" type="MeshInstance" parent="root/anchor/body"]
+transform = Transform( 0.02, 0, 0, 0, 0.012902, -0.0700958, 0, 0.027072, 0.0371933, -0.00951634, -0.0246653, 0.116119 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../../../..")
+
+[node name="lower2" type="MeshInstance" parent="root/anchor/body"]
+transform = Transform( 0.02, 0, 0, 0, -0.0214427, -0.0578687, 0, 0.0209657, -0.0542954, -0.00951634, -0.0246655, -0.0295835 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../../../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+anims/equip = SubResource( 4 )
+anims/unequip = SubResource( 5 )
